@@ -1,1 +1,1 @@
-#Proyecto Sistemas Distribuidos Coordinador de Transacciones
+# Proyecto Sistemas Distribuidos Coordinador de Transacciones
