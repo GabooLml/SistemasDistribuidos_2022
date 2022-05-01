@@ -4,6 +4,17 @@ import java.text.*;
 
 public class Coordinador {
 
+	public void guardarMemoria(String registro) {
+		try {
+			FileWriter guardando = new FileWriter("memoria.txt", true);
+			guardando.write("\n");
+			for (int i = 0; i < registro.length(); i++) {
+				guardando.write(registro)
+			}
+		}
+	}
+
+
 	public static void main(String[] args) {
 		String cuenta = "";
 		float saldo = 0.0f;
@@ -13,6 +24,7 @@ public class Coordinador {
 		String memoria = "";
 
 		Hashtable<String, Float> Cuentas = new Hashtable<String, Float>();
+		
 		Cuentas.put("314141712", 100.53f);
 
 		Scanner sc = new Scanner(System.in);
