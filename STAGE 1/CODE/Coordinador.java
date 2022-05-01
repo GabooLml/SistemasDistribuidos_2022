@@ -3,18 +3,6 @@ import java.util.*;
 import java.text.*;
 
 public class Coordinador {
-
-	public void guardarMemoria(String registro) {
-		try {
-			FileWriter guardando = new FileWriter("memoria.txt", true);
-			guardando.write("\n");
-			for (int i = 0; i < registro.length(); i++) {
-				guardando.write(registro)
-			}
-		}
-	}
-
-
 	public static void main(String[] args) {
 		String cuenta = "";
 		float saldo = 0.0f;
@@ -24,6 +12,9 @@ public class Coordinador {
 		String memoria = "";
 
 		Hashtable<String, Float> Cuentas = new Hashtable<String, Float>();
+		Date date = new Date();
+		DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
+		GuardarMemoria registro = new GuardarMemoria();
 		
 		Cuentas.put("314141712", 100.53f);
 
@@ -48,6 +39,8 @@ public class Coordinador {
 				//Consulta de saldo
 				saldo = Cuentas.get(cuenta);
 				System.out.println("EL SALDO DE SU CUENTA ES DE " + saldo);
+				memoria = "[" + hourFormat.format(date) + "]" + " CONSULTA DE SALDO ";
+				registro.guardar(memoria);
 				break;
 
 			case 2:
@@ -58,6 +51,8 @@ public class Coordinador {
 				deposito = sc.nextFloat();
 				Cuentas.put(cuenta, saldo + deposito);
 				System.out.println("USTED DEPOSITO $" + deposito);
+				memoria = "[" + hourFormat.format(date) + "]" + " DEPOSITO DE " + Float.toString(deposito);
+				registro.guardar(memoria);
 				break;
 
 			case 3:
@@ -68,6 +63,8 @@ public class Coordinador {
 				Cuentas.put(cuenta, saldo - retiro);
 				System.out.print("=>");
 				System.out.println("USTED RETIRO " + retiro);
+				memoria = "[" + hourFormat.format(date) + "]" + " RETIRO DE " + Float.toString(deposito);
+				registro.guardar(memoria);
 				break;
 
 
