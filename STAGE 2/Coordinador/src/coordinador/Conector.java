@@ -17,7 +17,7 @@ import java.sql.Statement;
  * @author gabri
  */
 public class Conector {
-    private final String urlSQLite = "jdbc:sqlite:C:\\Users\\gabri\\Desktop\\Banco.db";
+    private final String urlSQLite = "jdbc:sqlite:Banco.db";
     private Driver driverSQLite;
     private Connection conSQLite;
     private double idTransaccion; 
