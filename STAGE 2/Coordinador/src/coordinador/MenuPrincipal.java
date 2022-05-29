@@ -54,7 +54,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jLabel1.setText("Banco Robarin S.A. de C.V.");
         desktopPane.add(jLabel1);
-        jLabel1.setBounds(130, 10, 140, 16);
+        jLabel1.setBounds(130, 10, 160, 16);
 
         jLabel2.setText("Numero de cuenta");
         desktopPane.add(jLabel2);
