@@ -1,4 +1,4 @@
-import java.text.*;
+ import java.text.*;
 import java.util.*;
 import java.io.*;
 
@@ -108,5 +108,8 @@ import java.io.*;
             cl2.start();
             sv2.start();
             System.out.println(Cuenta.saldo);
+            Cuenta cuenta1 = new Cuenta();
+
+            System.out.println(cuenta1.cuenta);
         }
     }

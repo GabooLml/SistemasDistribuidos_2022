@@ -1,3 +1,5 @@
 *.class
 #Archivos de la documentación
 *.docx
+/PRUEBAS/Coordinador/nbproject/private/
+/PRUEBAS/Coordinador/build/
