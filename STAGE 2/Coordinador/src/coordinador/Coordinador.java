@@ -4,6 +4,7 @@
  */
 package coordinador;
 
+import GUI.guiCoord;
 import java.sql.SQLException;
 
 /**
@@ -21,11 +22,16 @@ public class Coordinador {
         Conector cliente = new Conector();
         Conector servidor = new Conector();
         
+        guiCoord gui = new guiCoord();
+        gui.setVisible(true);
+        gui.setLocationRelativeTo(null);
+        
+        
         servidor.conectar('S');
         cliente.conectar('C');
-        cliente.consulta("1");
-        cliente.deposito("1", (float) 100.0);
-        cliente.retiro("1", (float) 50.0);
+        //cliente.consulta("1");
+        //cliente.deposito("1", (float) 100.0);
+        //cliente.retiro("1", (float) 50.0);
         cliente.cerrar('C');
         
         servidor.consulta("2");

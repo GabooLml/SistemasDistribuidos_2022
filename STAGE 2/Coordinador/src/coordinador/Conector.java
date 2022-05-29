@@ -44,15 +44,16 @@ public class Conector {
        }
     }
     
-    public void consulta(String id) throws SQLException {
+    public String consulta(String id) throws SQLException {
         ResultSet resultset;
+        String resultCons = null;
         if(write == false) {
             try{
                 Connection connection = DriverManager.getConnection(urlSQLite);
                 Statement statement = connection.createStatement();
                 String select = "select nombre, saldo from cuentas where num_cuenta = " + id + ";";
                 resultset = statement.executeQuery(select);
-                System.out.println(resultset.getString(1) + " " + resultset.getString(2));
+                resultCons = ("Cliente: "+ resultset.getString(1)+ "\n" + "Saldo: " +resultset.getString(2));
                 resultset.close();
                 statement.close();
                 connection.close();
@@ -62,10 +63,12 @@ public class Conector {
         } else {
             System.out.println("Operacion no disponible");
         }
+        return resultCons;
     }
     
-    public void deposito(String id, float deposito) throws SQLException {
+    public float deposito(String id, float deposito) throws SQLException {
         ResultSet resultset;
+        float acumulado = 0;
         if(status == true && write == false) {
             write = true;
             try{
@@ -73,7 +76,8 @@ public class Conector {
                 Statement statement = connection.createStatement();
                 String select = "select saldo from cuentas where num_cuenta = " + id + ";";
                 resultset = statement.executeQuery(select);
-                float acumulado = resultset.getFloat(1) + deposito;
+                 acumulado = resultset.getFloat(1) + deposito;
+                //salFinal = Float.toString(acumulado);
                 resultset.close();
                 statement.close();
                 Statement statement1 = connection.createStatement();
@@ -89,10 +93,12 @@ public class Conector {
         if(status == true && write == true) {
             System.out.println("Operacion disponible");
         }
+        return acumulado;
     }
     
-    public void retiro(String id, float retiro) throws SQLException {
+    public float retiro(String id, float retiro) throws SQLException {
         ResultSet resultset;
+        float acumulado = 0;
         if(status == true && write == false) {
             write = true;
             try{
@@ -100,7 +106,7 @@ public class Conector {
                 Statement statement = connection.createStatement();
                 String select = "select saldo from cuentas where num_cuenta = " + id + ";";
                 resultset = statement.executeQuery(select);
-                float acumulado = resultset.getFloat(1) - retiro;
+                acumulado = resultset.getFloat(1) - retiro;
                 resultset.close();
                 statement.close();
                 Statement statement1 = connection.createStatement();
@@ -116,6 +122,7 @@ public class Conector {
         if(status == true && write == true) {
             System.out.println("Operacion disponible");
         }
+        return acumulado;
     }
     
     public void cerrar(char origen) {
